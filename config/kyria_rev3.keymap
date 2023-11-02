@@ -58,7 +58,7 @@
             // rotary sensor binding
             // sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
 
-            label = "L0";
+            label = "default";
         };
 
         writing {
@@ -69,7 +69,7 @@
                                   &trans  &trans  &to 3  &kp B  &kp BACKSPACE  &kp RET  &to 2   &trans  &trans  &trans
             >;
 
-            label = "l1";
+            label = "letters";
         };
 
         Symbols {
