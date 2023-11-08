@@ -78,10 +78,10 @@
             //                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
 
             bindings = <
-&sk TAB     &none              &none                   &none               &none                 &none                                           &none     &none       &to 1   &none      &kp PAGE_UP    &none
-&kp ESCAPE  &kp LEFT_SHIFT     &mt LEFT_CONTROL LG(L)  &mt LEFT_WIN LG(D)  &mt LEFT_ALT LC(F)    &to 4                                           &kp LEFT  &kp DOWN    &kp UP  &kp RIGHT  &kp PAGE_DOWN  &none
-&kp ENTER   &winSearchForProg  &kp LC(X)               &kp LC(C)           &kp LC(V)             &none  &bt BT_PRV  &none  &none  &bt BT_NXT     &none     &kp C_MUTE  &none   &none      &none          &none
-                                                       &none               &kp LS(LEFT_CONTROL)  &mo 2  &kp SPACE   &mo 3  &none  &kp BACKSPACE  &mo 2     &none       &none
+&sk LA(TAB)  &none              &none                   &none               &none                 &none                                           &kp LC(Z)  &none       &to 1   &none      &kp PAGE_UP    &none
+&kp ESCAPE   &kp LEFT_SHIFT     &mt LEFT_CONTROL LG(L)  &mt LEFT_WIN LG(D)  &mt LEFT_ALT LC(F)    &to 4                                           &kp LEFT   &kp DOWN    &kp UP  &kp RIGHT  &kp PAGE_DOWN  &none
+&kp ENTER    &winSearchForProg  &kp LC(X)               &kp LC(C)           &kp LC(V)             &none  &bt BT_PRV  &none  &none  &bt BT_NXT     &none      &kp C_MUTE  &none   &none      &none          &kp ENTER
+                                                        &none               &kp LS(LEFT_CONTROL)  &mo 2  &kp SPACE   &mo 3  &none  &kp BACKSPACE  &mo 2      &none       &none
             >;
 
             // rotary sensor binding
