@@ -15,12 +15,14 @@
 
 // Uncomment this block if using RGB
 
-&led_strip {
-    chain-length = <6>;
-
+//&led_strip {
+    //chain-length = <6>;
     // chain-length = <31>; // Uncomment if using both per-key and underglow LEDs
+    //chain-length = <25>; // Uncomment if using only per-key LEDs.
+//};
 
-    chain-length = <25>; // Uncomment if using only per-key LEDs.
+&mt {
+    retro-tap;
 };
 
 / {
@@ -28,13 +30,13 @@
         ESCtoDefaultLayer: ESCtoDefaultLayer {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp ESC &to 0>;
+            bindings = <&kp ESC &to 1>;
             label = "ESCTODEFAULTLAYER";
         };
         winSearchForProg: winSearchForProg {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_GUI &to 1>;
+            bindings = <&kp LEFT_GUI &to 0>;
             label = "WINSEARCHFORPROG";
         };
     };
@@ -70,7 +72,18 @@
     keymap {
         compatible = "zmk,keymap";
 
-        default {
+        writing {
+            bindings = <
+&kp TAB     &kp Q        &kp W               &kp E           &kp R           &kp T                                     &kp Z    &kp U            &kp I            &kp O                &kp P                      &ExclamQuestionMark
+&kp ESCAPE  &mt LSHFT A  &mt LEFT_CONTROL S  &mt LEFT_GUI D  &mt LEFT_ALT F  &kp G                                     &kp H    &mt RIGHT_ALT J  &mt RIGHT_GUI K  &mt RIGHT_CONTROL L  &mt RIGHT_SHIFT SEMICOLON  &kp SINGLE_QUOTE
+&kp ENTER   &kp Y        &kp X               &kp C           &kp V           &kp B  &none  &none  &none     &none      &kp N    &kp M            &kp COMMA        &kp PERIOD           &kp MINUS                  &kp RET
+                                             &trans          &trans          &mo 2  &mo 1  &mo 3  &kp BSPC  &kp SPACE  &kp RET  &trans           &trans
+            >;
+
+            label = "letters";
+        };
+
+        Movement {
             // ---------------------------------------------------------------------------------------------------------------------------------
             // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
             // |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
@@ -78,35 +91,24 @@
             //                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
 
             bindings = <
-&sk LA(TAB)  &none              &none                   &none               &none                 &none                                           &kp LC(Z)  &none       &to 1   &none      &kp PAGE_UP    &none
-&kp ESCAPE   &kp LEFT_SHIFT     &mt LEFT_CONTROL LG(L)  &mt LEFT_WIN LG(D)  &mt LEFT_ALT LC(F)    &to 4                                           &kp LEFT   &kp DOWN    &kp UP  &kp RIGHT  &kp PAGE_DOWN  &none
-&kp ENTER    &winSearchForProg  &kp LC(X)               &kp LC(C)           &kp LC(V)             &none  &bt BT_PRV  &none  &none  &bt BT_NXT     &none      &kp C_MUTE  &none   &none      &none          &kp ENTER
-                                                        &none               &kp LS(LEFT_CONTROL)  &mo 2  &kp SPACE   &mo 3  &none  &kp BACKSPACE  &mo 2      &none       &none
+&none  &none              &none                   &none               &none                 &none                                        &kp LC(Z)  &none       &to 0   &none      &kp PAGE_UP    &none
+&none  &none              &mt LEFT_CONTROL LG(L)  &mt LEFT_WIN LG(D)  &mt LEFT_ALT LC(F)    &to 4                                        &kp LEFT   &kp DOWN    &kp UP  &kp RIGHT  &kp PAGE_DOWN  &none
+&none  &winSearchForProg  &kp LC(X)               &kp LC(C)           &kp LC(V)             &none  &bt BT_PRV  &none  &none  &bt BT_NXT  &none      &kp C_MUTE  &none   &none      &none          &none
+                                                  &none               &kp LS(LEFT_CONTROL)  &none  &none       &none  &none  &none       &none      &none       &none
             >;
 
             // rotary sensor binding
             // sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
 
-            label = "default";
-        };
-
-        writing {
-            bindings = <
-&kp ESC             &kp Q        &kp W               &kp E           &kp R           &kp T                                          &kp Z  &kp U            &kp I            &kp O                &kp P                      &ExclamQuestionMark
-&ESCtoDefaultLayer  &mt LSHFT A  &mt LEFT_CONTROL S  &mt LEFT_GUI D  &mt LEFT_ALT F  &kp G                                          &kp H  &mt RIGHT_ALT J  &mt RIGHT_GUI K  &mt RIGHT_CONTROL L  &mt RIGHT_SHIFT SEMICOLON  &kp SINGLE_QUOTE
-&kp ENTER           &kp Y        &kp X               &kp C           &kp V           &kp B  &none      &none  &none  &none          &kp N  &kp M            &kp COMMA        &kp PERIOD           &kp MINUS                  &kp RET
-                                                     &trans          &trans          &mo 2  &kp SPACE  &mo 3  &none  &kp BACKSPACE  &mo 2  &trans           &trans
-            >;
-
-            label = "letters";
+            label = "movement";
         };
 
         Symbols {
             bindings = <
-&trans              &kp EXCLAMATION  &kp AT_SIGN    &kp POUND       &kp DOLLAR        &kp PERCENT                                           &kp CARET              &kp AMPERSAND      &kp ASTERISK     &kp PIPE          &kp QUESTION  &trans
-&ESCtoDefaultLayer  &kp BACKSLASH    &kp LESS_THAN  &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS                                  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp RIGHT_BRACE  &kp GREATER_THAN  &kp SLASH     &kp TILDE
-&trans              &trans           &trans         &trans          &kp RC(N5)        &trans                &trans  &trans  &trans  &trans  &none                  &none              &kp COMMA        &kp LS(QMARK)     &kp MINUS     &trans
-                                                    &trans          &trans            &mo 2                 &none   &mo 3   &none   &none   &mo 2                  &trans             &trans
+&trans  &kp EXCLAMATION  &kp AT_SIGN    &kp POUND       &kp DOLLAR        &kp PERCENT                                           &kp CARET              &kp AMPERSAND      &kp ASTERISK     &kp PIPE          &kp QUESTION  &trans
+&none   &kp BACKSLASH    &kp LESS_THAN  &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS                                  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp RIGHT_BRACE  &kp GREATER_THAN  &kp SLASH     &kp TILDE
+&trans  &trans           &trans         &trans          &kp RC(N5)        &trans                &trans  &trans  &trans  &trans  &none                  &none              &kp COMMA        &kp LS(QMARK)     &kp MINUS     &trans
+                                        &trans          &trans            &none                 &none   &none   &none   &none   &none                  &trans             &trans
             >;
 
             label = "symbols";
@@ -114,10 +116,10 @@
 
         Numbers {
             bindings = <
-&kp KP_EQUAL        &kp LS(STAR)  &kp N7  &kp N8  &kp N9         &kp FSLH                                             &kp F11  &kp F12  &trans  &trans  &trans   &trans
-&ESCtoDefaultLayer  &kp LS(PLUS)  &kp N4  &kp N5  &kp N6         &kp MINUS                                            &kp F6   &kp F7   &kp F8  &kp F9  &kp F10  &trans
-&kp ENTER           &kp N0        &kp N1  &kp N2  &kp N3         &kp DOT    &trans     &trans  &trans  &trans         &kp F1   &kp F2   &kp F3  &kp F4  &kp F5   &trans
-                                          &trans  &kp BACKSPACE  &mo 2      &kp SPACE  &mo 3   &none   &kp BACKSPACE  &mo 2    &trans   &trans
+&kp KP_EQUAL  &kp LS(STAR)  &kp N7  &kp N8  &kp N9  &kp FSLH                                             &kp F11  &kp F12  &trans  &trans  &trans   &trans
+&to 0         &kp LS(PLUS)  &kp N4  &kp N5  &kp N6  &kp MINUS                                            &kp F6   &kp F7   &kp F8  &kp F9  &kp F10  &trans
+&kp ENTER     &kp N0        &kp N1  &kp N2  &kp N3  &kp DOT    &trans  &trans  &trans         &trans     &kp F1   &kp F2   &kp F3  &kp F4  &kp F5   &trans
+                                    &trans  &none   &none      &none   &none   &kp BACKSPACE  &kp SPACE  &kp RET  &trans   &trans
             >;
 
             label = "numbers";
@@ -125,10 +127,10 @@
 
         Gaming {
             bindings = <
-&kp ESCAPE          &kp TAB    &kp Q  &kp W   &kp E   &kp R                                             &trans  &trans  &trans  &trans  &trans  &trans
-&ESCtoDefaultLayer  &kp CAPS   &kp A  &kp S   &kp D   &kp F                                             &trans  &trans  &trans  &trans  &trans  &trans
-&kp ENTER           &kp LSHFT  &kp Y  &kp X   &kp C   &kp V          &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                                      &trans  &trans  &kp BACKSPACE  &kp SPACE  &mo 3   &trans  &trans  &trans  &trans  &trans
+&kp ESCAPE  &kp TAB    &kp Q  &kp W   &kp E   &kp R                                             &trans  &trans  &trans  &trans  &trans  &trans
+&to 0       &kp CAPS   &kp A  &kp S   &kp D   &kp F                                             &trans  &trans  &trans  &trans  &trans  &trans
+&kp ENTER   &kp LSHFT  &kp Y  &kp X   &kp C   &kp V          &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                              &trans  &trans  &kp BACKSPACE  &kp SPACE  &mo 3   &trans  &trans  &trans  &trans  &trans
             >;
 
             label = "gaming";
