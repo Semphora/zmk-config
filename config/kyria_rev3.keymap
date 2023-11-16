@@ -33,6 +33,7 @@
             bindings = <&kp ESC &to 1>;
             label = "ESCTODEFAULTLAYER";
         };
+
         winSearchForProg: winSearchForProg {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -116,10 +117,10 @@
 
         Numbers {
             bindings = <
-&kp KP_EQUAL  &kp LS(STAR)  &kp N7  &kp N8  &kp N9  &kp FSLH                                             &kp F11  &kp F12  &trans  &trans  &trans   &trans
-&to 0         &kp LS(PLUS)  &kp N4  &kp N5  &kp N6  &kp MINUS                                            &kp F6   &kp F7   &kp F8  &kp F9  &kp F10  &trans
-&kp ENTER     &kp N0        &kp N1  &kp N2  &kp N3  &kp DOT    &trans  &trans  &trans         &trans     &kp F1   &kp F2   &kp F3  &kp F4  &kp F5   &trans
-                                    &trans  &none   &none      &none   &none   &kp BACKSPACE  &kp SPACE  &kp RET  &trans   &trans
+&kp EQUAL  &kp LS(STAR)  &kp N7  &kp N8  &kp N9  &kp FSLH                                             &kp F11  &kp F12  &trans  &trans  &trans   &trans
+&to 0      &kp LS(PLUS)  &kp N4  &kp N5  &kp N6  &kp MINUS                                            &kp F6   &kp F7   &kp F8  &kp F9  &kp F10  &trans
+&kp ENTER  &kp N0        &kp N1  &kp N2  &kp N3  &kp DOT    &trans  &trans  &trans         &trans     &kp F1   &kp F2   &kp F3  &kp F4  &kp F5   &trans
+                                 &trans  &none   &none      &none   &none   &kp BACKSPACE  &kp SPACE  &kp RET  &trans   &trans
             >;
 
             label = "numbers";
