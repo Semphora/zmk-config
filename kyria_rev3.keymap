@@ -22,7 +22,7 @@
 };
 
 &mt {
-    retro-tap;
+    flavor = "tap-preferred";
 };
 
 / {
@@ -33,6 +33,7 @@
             bindings = <&kp ESC &to 1>;
             label = "ESCTODEFAULTLAYER";
         };
+
         winSearchForProg: winSearchForProg {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -91,8 +92,8 @@
             //                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
 
             bindings = <
-&none  &none              &none                   &none               &none                 &none                                        &kp LC(Z)  &none       &to 0   &none      &kp PAGE_UP    &none
-&none  &none              &mt LEFT_CONTROL LG(L)  &mt LEFT_WIN LG(D)  &mt LEFT_ALT LC(F)    &to 4                                        &kp LEFT   &kp DOWN    &kp UP  &kp RIGHT  &kp PAGE_DOWN  &none
+&none  &none              &none                   &kp LC(LA(DELETE))  &none                 &none                                        &kp LC(Z)  &none       &to 0   &none      &kp PAGE_UP    &none
+&none  &none              &mt LEFT_CONTROL LG(L)  &mt LEFT_WIN LG(D)  &mt LEFT_ALT LC(F)    &none                                        &kp LEFT   &kp DOWN    &kp UP  &kp RIGHT  &kp PAGE_DOWN  &none
 &none  &winSearchForProg  &kp LC(X)               &kp LC(C)           &kp LC(V)             &none  &bt BT_PRV  &none  &none  &bt BT_NXT  &none      &kp C_MUTE  &none   &none      &none          &none
                                                   &none               &kp LS(LEFT_CONTROL)  &none  &none       &none  &none  &none       &none      &none       &none
             >;
@@ -105,10 +106,10 @@
 
         Symbols {
             bindings = <
-&trans  &kp EXCLAMATION  &kp AT_SIGN    &kp POUND       &kp DOLLAR        &kp PERCENT                                           &kp CARET              &kp AMPERSAND      &kp ASTERISK     &kp PIPE          &kp QUESTION  &trans
-&none   &kp BACKSLASH    &kp LESS_THAN  &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS                                  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp RIGHT_BRACE  &kp GREATER_THAN  &kp SLASH     &kp TILDE
-&trans  &trans           &trans         &trans          &kp RC(N5)        &trans                &trans  &trans  &trans  &trans  &none                  &none              &kp COMMA        &kp LS(QMARK)     &kp MINUS     &trans
-                                        &trans          &trans            &none                 &none   &none   &none   &none   &none                  &trans             &trans
+&trans     &kp EXCLAMATION  &kp AT_SIGN    &kp POUND       &kp DOLLAR        &kp PERCENT                                           &kp CARET              &kp AMPERSAND      &kp ASTERISK     &kp PIPE          &kp QUESTION  &trans
+&kp EQUAL  &kp BACKSLASH    &kp LESS_THAN  &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS                                  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp RIGHT_BRACE  &kp GREATER_THAN  &kp SLASH     &kp TILDE
+&trans     &trans           &trans         &trans          &kp RA(N5)        &trans                &trans  &trans  &trans  &trans  &none                  &none              &kp COMMA        &kp LS(QMARK)     &kp MINUS     &trans
+                                           &trans          &trans            &none                 &none   &none   &none   &none   &none                  &trans             &trans
             >;
 
             label = "symbols";
@@ -116,10 +117,10 @@
 
         Numbers {
             bindings = <
-&kp KP_EQUAL  &kp LS(STAR)  &kp N7  &kp N8  &kp N9  &kp FSLH                                             &kp F11  &kp F12  &trans  &trans  &trans   &trans
-&to 0         &kp LS(PLUS)  &kp N4  &kp N5  &kp N6  &kp MINUS                                            &kp F6   &kp F7   &kp F8  &kp F9  &kp F10  &trans
-&kp ENTER     &kp N0        &kp N1  &kp N2  &kp N3  &kp DOT    &trans  &trans  &trans         &trans     &kp F1   &kp F2   &kp F3  &kp F4  &kp F5   &trans
-                                    &trans  &none   &none      &none   &none   &kp BACKSPACE  &kp SPACE  &kp RET  &trans   &trans
+&none      &kp LS(STAR)  &kp N7  &kp N8  &kp N9  &kp FSLH                                             &kp F11  &kp F12  &trans  &trans  &trans   &trans
+&kp EQUAL  &kp LS(PLUS)  &kp N4  &kp N5  &kp N6  &kp MINUS                                            &kp F6   &kp F7   &kp F8  &kp F9  &kp F10  &trans
+&kp ENTER  &kp N0        &kp N1  &kp N2  &kp N3  &kp DOT    &trans  &trans  &trans         &trans     &kp F1   &kp F2   &kp F3  &kp F4  &kp F5   &trans
+                                 &trans  &none   &none      &none   &none   &kp BACKSPACE  &kp SPACE  &kp RET  &trans   &trans
             >;
 
             label = "numbers";
