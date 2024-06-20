@@ -76,7 +76,7 @@
 &kp TAB     &kp Q        &kp W               &kp E           &kp R           &kp T                                     &kp Z    &kp U            &kp I            &kp O                &kp P                      &ExclamQuestionMark
 &kp ESCAPE  &mt LSHFT A  &mt LEFT_CONTROL S  &mt LEFT_GUI D  &mt LEFT_ALT F  &kp G                                     &kp H    &mt RIGHT_ALT J  &mt RIGHT_GUI K  &mt RIGHT_CONTROL L  &mt RIGHT_SHIFT SEMICOLON  &kp SINGLE_QUOTE
 &kp ENTER   &kp Y        &kp X               &kp C           &kp V           &kp B  &none  &none  &none     &none      &kp N    &kp M            &kp COMMA        &kp PERIOD           &kp MINUS                  &kp RET
-                                             &trans          &trans          &mo 2  &mo 1  &mo 3  &kp BSPC  &kp SPACE  &kp RET  &trans           &trans
+                                             &tog 4          &trans          &mo 2  &mo 1  &mo 3  &kp BSPC  &kp SPACE  &kp RET  &trans           &trans
             >;
 
             label = "letters";
