@@ -6,7 +6,6 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
 
 // layer numbers
@@ -19,7 +18,7 @@
 &led_strip {
     //chain-length = <6>;
     // chain-length = <31>; // Uncomment if using both per-key and underglow LEDs
-    chain-length = <25>; // Uncomment if using only per-key LEDs.
+    //chain-length = <25>; // Uncomment if using only per-key LEDs.
 };
 
 &mt { flavor = "tap-preferred"; };
@@ -79,10 +78,10 @@
 
         writing {
             bindings = <
-&kp TAB     &kp Q  &kp W  &kp E   &kp R   &kp T                                              &kp Y    &kp U   &kp I      &kp O       &kp P          &ExclamQuestionMark
-&kp ESCAPE  &kp A  &kp S  &kp D   &kp F   &kp G                                              &kp H    &kp J   &kp K      &kp L       &kp SEMICOLON  &kp SINGLE_QUOTE
-&kp ENTER   &kp Z  &kp X  &kp C   &kp V   &kp B  &none  &none  &ext_power EP_TOG  &none      &kp N    &kp M   &kp COMMA  &kp PERIOD  &kp MINUS      &kp RET
-                          &tog 4  &trans  &mo 2  &mo 1  &mo 3  &kp BSPC           &kp SPACE  &kp RET  &trans  &trans
+&kp TAB     &kp Q  &kp W  &kp E   &kp R   &kp T                                     &kp Y    &kp U   &kp I      &kp O       &kp P          &ExclamQuestionMark
+&kp ESCAPE  &kp A  &kp S  &kp D   &kp F   &kp G                                     &kp H    &kp J   &kp K      &kp L       &kp SEMICOLON  &kp SINGLE_QUOTE
+&kp ENTER   &kp Z  &kp X  &kp C   &kp V   &kp B  &none  &none  &none     &none      &kp N    &kp M   &kp COMMA  &kp PERIOD  &kp MINUS      &none
+                          &tog 4  &trans  &mo 2  &mo 1  &mo 3  &kp BSPC  &kp SPACE  &kp RET  &trans  &trans
             >;
 
             label = "letters";
