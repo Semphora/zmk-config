@@ -77,6 +77,16 @@
             bindings = <&kp LEFT_ALT>;
             key-positions = <42 12>;
         };
+
+        LAlt+CTRL {
+            bindings = <&kp LC(LEFT_ALT)>;
+            key-positions = <43 42 12>;
+        };
+
+        RAlt+CTRL {
+            bindings = <&kp RC(RIGHT_ALT)>;
+            key-positions = <44 43 12>;
+        };
     };
 
     behaviors {
