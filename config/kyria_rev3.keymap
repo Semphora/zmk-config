@@ -57,6 +57,36 @@
             bindings = <&bt BT_CLR>;
             key-positions = <30 33>;
         };
+
+        enter {
+            bindings = <&kp ENTER>;
+            key-positions = <19 20 21>;
+        };
+
+        control {
+            bindings = <&kp LEFT_CONTROL>;
+            key-positions = <12 43>;
+        };
+
+        ralt {
+            bindings = <&kp RIGHT_ALT>;
+            key-positions = <44 12>;
+        };
+
+        lalt {
+            bindings = <&kp LEFT_ALT>;
+            key-positions = <42 12>;
+        };
+
+        LAlt+CTRL {
+            bindings = <&kp LC(LEFT_ALT)>;
+            key-positions = <43 42 12>;
+        };
+
+        RAlt+CTRL {
+            bindings = <&kp RC(RIGHT_ALT)>;
+            key-positions = <44 43 12>;
+        };
     };
 
     behaviors {
@@ -73,10 +103,10 @@
 
         writing {
             bindings = <
-&kp TAB     &kp Q        &kp W               &kp E           &kp R           &kp T                                     &kp Z    &kp U            &kp I            &kp O                &kp P                      &ExclamQuestionMark
-&kp ESCAPE  &mt LSHFT A  &mt LEFT_CONTROL S  &mt LEFT_GUI D  &mt LEFT_ALT F  &kp G                                     &kp H    &mt RIGHT_ALT J  &mt RIGHT_GUI K  &mt RIGHT_CONTROL L  &mt RIGHT_SHIFT SEMICOLON  &kp SINGLE_QUOTE
-&kp ENTER   &kp Y        &kp X               &kp C           &kp V           &kp B  &none  &none  &none     &none      &kp N    &kp M            &kp COMMA        &kp PERIOD           &kp MINUS                  &kp RET
-                                             &tog 4          &trans          &mo 2  &mo 1  &mo 3  &kp BSPC  &kp SPACE  &kp RET  &trans           &trans
+&kp TAB     &kp Q  &kp W  &kp E  &kp R  &kp T                                              &kp Y  &kp U   &kp I      &kp O       &kp P          &ExclamQuestionMark
+&kp ESCAPE  &kp A  &kp S  &kp D  &kp F  &kp G                                              &kp H  &kp J   &kp K      &kp L       &kp SEMICOLON  &kp SINGLE_QUOTE
+&none       &kp Z  &kp X  &kp C  &kp V  &kp B  &none           &none  &none     &none      &kp N  &kp M   &kp COMMA  &kp PERIOD  &kp MINUS      &none
+                          &none  &none  &mo 2  &kp LEFT_SHIFT  &mo 1  &kp BSPC  &kp SPACE  &mo 3  &trans  &trans
             >;
 
             label = "letters";
@@ -90,10 +120,10 @@
             //                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
 
             bindings = <
-&none  &none              &none                   &kp LC(LA(DELETE))  &none                 &none                                               &kp LC(Z)  &none       &to 0   &none      &kp PAGE_UP    &none
-&none  &none              &mt LEFT_CONTROL LG(L)  &mt LEFT_WIN LG(D)  &mt LEFT_ALT LC(F)    &none                                               &kp LEFT   &kp DOWN    &kp UP  &kp RIGHT  &kp PAGE_DOWN  &none
-&none  &winSearchForProg  &kp LC(X)               &kp LC(C)           &kp LC(V)             &none  &bt BT_PRV  &bt BT_CLR  &none    &bt BT_NXT  &none      &kp C_MUTE  &none   &none      &none          &none
-                                                  &none               &kp LS(LEFT_CONTROL)  &none  &none       &none       &kp DEL  &none       &none      &none       &none
+&none       &none              &none                   &kp LC(LA(DELETE))  &kp LS(LEFT_CONTROL)  &none                                                   &kp LC(X)  &none       &to 0   &none      &kp PAGE_UP    &none
+&kp LC(F4)  &none              &mt LEFT_CONTROL LG(L)  &mt LEFT_WIN LG(D)  &mt LEFT_ALT LC(F)    &none                                                   &kp LEFT   &kp DOWN    &kp UP  &kp RIGHT  &kp PAGE_DOWN  &none
+&none       &winSearchForProg  &kp LC(X)               &kp LC(C)           &kp LC(V)             &kp LC(Z)  &bt BT_PRV  &bt BT_CLR  &none    &bt BT_NXT  &none      &kp C_MUTE  &none   &none      &none          &none
+                                                       &none               &none                 &none      &none       &none       &kp DEL  &none       &none      &none       &none
             >;
 
             // rotary sensor binding
@@ -115,10 +145,10 @@
 
         Numbers {
             bindings = <
-&kp BACKSPACE  &kp LS(STAR)  &kp N7  &kp N8  &kp N9  &kp FSLH                                             &kp F11  &kp F12  &trans  &trans  &trans   &trans
-&kp EQUAL      &kp LS(PLUS)  &kp N4  &kp N5  &kp N6  &kp MINUS                                            &kp F6   &kp F7   &kp F8  &kp F9  &kp F10  &trans
-&kp ENTER      &kp N0        &kp N1  &kp N2  &kp N3  &kp DOT    &trans  &trans  &trans         &trans     &kp F1   &kp F2   &kp F3  &kp F4  &kp F5   &trans
-                                     &trans  &none   &none      &none   &none   &kp BACKSPACE  &kp SPACE  &kp RET  &trans   &trans
+&kp BACKSPACE  &kp LS(STAR)  &kp F9  &kp F10  &kp F11  &kp F12                                            &none            &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp ASTERISK  &kp SLASH
+&kp EQUAL      &kp LS(PLUS)  &kp F5  &kp F6   &kp F7   &kp F8                                             &kp KP_NUMBER_0  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp PLUS      &kp MINUS
+&kp ENTER      &kp N0        &kp F1  &kp F2   &kp F3   &kp F4   &trans  &trans  &trans         &to 0      &kp KP_N0        &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_DOT    &trans
+                                     &trans   &none    &none    &none   &none   &kp BACKSPACE  &kp SPACE  &kp RET          &trans           &trans
             >;
 
             label = "numbers";
